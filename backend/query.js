@@ -96,7 +96,12 @@ Context: ${context}`
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://collage-help-assistent-rag.vercel.app', // ✅ your frontend URL
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 // ⚙️ Serve static frontend from 'public' folder
